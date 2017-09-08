@@ -6,6 +6,7 @@ angular
 
         factory.add = add;
         factory.list = list;
+        factory.edit = edit;
 
         function add(contact) {
             ContactService.push(contact);
@@ -14,6 +15,22 @@ angular
 
         function list() {
             return ContactService.getList();
+        }
+
+
+        function edit(contact) {
+
+            var list = ContactService.getList();
+            var index = null;
+            var contactOld = list.filter(function(el, pos) {
+                index = pos;
+                return el.id == contact.id;
+            });
+
+            if(index != null) {
+                list.splice(index, 1, contact);
+            }
+
         }
 
         return factory;

@@ -5,18 +5,21 @@ angular
     controller: function (ContactFactory) {
 
         var vm = this;
+        var id = 0;
 
         vm.hero = 'New contact';
 
         vm.list = [];
 
         vm.form = {
+            id: 0,
             name: '',
             telephone: '',
             email: ''
         }
 
         vm.add = add;
+        vm.edit = edit;
 
         vm.heroList = 'List a contacts';
 
@@ -31,15 +34,43 @@ angular
                 return;
             }
 
+            if(contact.id) {
+                clean();
+                return ContactFactory.edit(contact);
+            }
+
+
+            contact.id = ++id;
+
             ContactFactory.add(contact);
 
-            vm.form = {
-                name: '',
-                telephone: '',
-                email: ''
-            };
+            clean();
 
         }
 
+        function edit(contact, indexList) {
+
+            if(!contact) {
+                alert('Your must need a valida contact');
+                return;
+            }
+
+            vm.form.id = contact.id;
+            vm.form.name = contact.name;
+            vm.form.telephone = contact.telephone;
+            vm.form.email = contact.email;
+
+        }
+
+
+        function clean() {
+            return vm.form = {
+                id: 0,
+                name: '',
+                telephone: '',
+                email: ''
+            }
+
+        }
     }
   });
