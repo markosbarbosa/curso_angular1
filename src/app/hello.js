@@ -8,6 +8,8 @@ angular
 
         vm.hero = 'New contact';
 
+        vm.list = [];
+
         vm.form = {
             name: '',
             telephone: '',
@@ -15,6 +17,12 @@ angular
         }
 
         vm.add = add;
+
+        vm.heroList = 'List a contacts';
+
+        (function onInit() {
+            vm.list = ContactFactory.list();
+        })();
 
         function add(contact) {
 

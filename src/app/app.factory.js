@@ -5,13 +5,16 @@ angular
         var factory = {};
 
         factory.add = add;
+        factory.list = list;
 
         function add(contact) {
-
             ContactService.push(contact);
-            console.log(ContactService.getList());
         }
 
+
+        function list() {
+            return ContactService.getList();
+        }
 
         return factory;
 

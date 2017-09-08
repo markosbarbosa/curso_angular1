@@ -7,3 +7,22 @@
 
     <button type="submit">Create a new contact</button>
 </form>
+
+<h1>{{ $ctrl.heroList }}</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Telefone</th>
+            <th>E-mail</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in $ctrl.list">
+            <td ng-bind="item.name"></td>
+            <td ng-bind="item.telephone"></td>
+            <td ng-bind="item.email"></td>
+        </tr>
+    </tbody>
+</table>
