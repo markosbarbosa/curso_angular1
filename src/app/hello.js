@@ -2,37 +2,36 @@ angular
   .module('app')
   .component('app', {
     templateUrl: 'app/hello.html',
-    controller: function (MathFactory, MathService) {
-      this.hello = 'Hello World!';
+    controller: function (ContactFactory) {
 
-      this.person = {
-          name: 'Marcos',
-          lastName: 'Barbosa'
-      }
+        var vm = this;
 
+        vm.hero = 'New contact';
 
-      this.list = [{
-          name: 'Marcos',
-          lastname: 'Barbosa'
-      },
-      {
-          name: 'Marcia',
-          lastname: 'Barbosa'
-      },
-      {
-          name: 'Danielle',
-          lastname: 'Barbosa'
-      }];
+        vm.form = {
+            name: '',
+            telephone: '',
+            email: ''
+        }
 
+        vm.add = add;
 
-      this.sum = function(num1, num2) {
-          return alert(MathService.sumService(num1, num2));
-      }
+        function add(contact) {
 
-      this.sub = function(num1, num2) {
-          return alert(MathService.subService(num1, num2))
-      }
+            if(!contact) {
+                alert('You must need a valida contact.');
+                return;
+            }
 
+            ContactFactory.add(contact);
+
+            vm.form = {
+                name: '',
+                telephone: '',
+                email: ''
+            };
+
+        }
 
     }
   });

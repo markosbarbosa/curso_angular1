@@ -1,30 +1,9 @@
-<h1>{{ $ctrl.hello }}</h1>
+<h1>{{ $ctrl.hero }}</h1>
 
-<input type="text" ng-model="$ctrl.person.name">
-<input type="text" ng-model="$ctrl.person.lastName">
+<form ng-submit="$ctrl.add($ctrl.form)">
+    <input type="text" ng-model="$ctrl.form.name" placeholder="Name">
+    <input type="text" ng-model="$ctrl.form.telephone" placeholder="Telephone">
+    <input type="email" ng-model="$ctrl.form.email" placeholder="E-mail">
 
-<input type="number" ng-model="num1">
-<input type="number" ng-model="num2">
-
-<input type="submit" ng-click="$ctrl.sum(num1, num2)" value="SUM">
-<input type="submit" ng-click="$ctrl.sub(num1, num2)" value="SUB">
-
-<br>
-{{ $ctrl.person.name }}
-<br>
-{{ $ctrl.person.lastName }}
-
-
-
-<ul>
-    <li ng-repeat="item in $ctrl.list">
-        <p>{{ item.name }}</p>
-        <p ng-bind="item.lastname"></p>
-    </li>
-</ul>
-
-
-<app-directive name="Marcos" lastname="Barbosa"></app-directive>
-<!--<div app-directive=""></div>-->
-
-<hero></hero>
+    <button type="submit">Create a new contact</button>
+</form>

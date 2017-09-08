@@ -1,20 +1,19 @@
 angular
     .module('app')
-    .factory('MathFactory', function() {
+    .factory('ContactFactory', function(ContactService) {
 
         var factory = {};
 
-        factory.sub = sub;
-        factory.sum = sum;
+        factory.add = add;
 
-        function sub(num1, num2) {
-            return num1 - num2;
+        function add(contact) {
+
+            ContactService.push(contact);
+            console.log(ContactService.getList());
         }
 
-        function sum(num1, num2) {
-            return num1 + num2;
-        }
 
         return factory;
+
 
     });
