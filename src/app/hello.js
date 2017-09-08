@@ -20,6 +20,7 @@ angular
 
         vm.add = add;
         vm.edit = edit;
+        vm.remove = remove;
 
         vm.heroList = 'List a contacts';
 
@@ -51,7 +52,7 @@ angular
         function edit(contact, indexList) {
 
             if(!contact) {
-                alert('Your must need a valida contact');
+                alert('Your must need a valid a contact');
                 return;
             }
 
@@ -59,6 +60,19 @@ angular
             vm.form.name = contact.name;
             vm.form.telephone = contact.telephone;
             vm.form.email = contact.email;
+
+        }
+
+        function remove(contact) {
+
+            if (!contact) {
+                alert('Your must need a valid a contact');
+                return;
+            }
+
+            if (confirm('Tem certeza que deseja deletar' + contact.name)){
+                return ContactFactory.remove(contact);
+            }
 
         }
 
